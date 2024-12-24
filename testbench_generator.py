@@ -102,11 +102,11 @@ def parse_file(filename):
 
     # Block-level inputs and outputs
     inputs_match = finder.findall(
-        r"^\s*input\s*(\w+)?\s*(\[\s*\d+\s*:\s*\d+\s*\])?\s*([\w\s,]+);", verilog_code, re.MULTILINE
+        r"^\s*input\s*(wire|reg)?\s*(\[\s*\d+\s*:\s*\d+\s*\])?\s*([\w\s,]+);", verilog_code, re.MULTILINE
     )
 
     outputs_match = finder.findall(
-        r"^\s*output\s*(\w+)?\s*(\[\s*\d+\s*:\s*\d+\s*\])?\s*([\w\s,]+);", verilog_code, re.MULTILINE
+        r"^\s*output\s*(wire|reg)?\s*(\[\s*\d+\s*:\s*\d+\s*\])?\s*([\w\s,]+);", verilog_code, re.MULTILINE
     )
 
     # Process block-level inputs
