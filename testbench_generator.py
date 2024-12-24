@@ -405,7 +405,7 @@ def generate_testbench():
         initial begin
             // Generate clock
             {clock_signal} = 0;
-            forever #5 {clock_signal} = ~{clock_signal};
+            forever #1 {clock_signal} = ~{clock_signal};
         end
         """
 
