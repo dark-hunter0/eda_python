@@ -200,7 +200,34 @@ def parse_file(filename):
         print(f"Signal: {lhs}, Expression: {rhs}")
     print("______________________________________________________")
 
+    ################ logical operators ####################
+    pattern = r"(\w+)\s*=\s*(\w+)\s*([&|^!]{1,2})\s*(\w+)?;"
 
+    # Find all matches in the Verilog code
+    matches = re.findall(pattern, verilog_code)
+
+    # Dictionary to store the outputs
+    logical_operations = {}
+
+    # Process matches
+    for match in matches:
+        output_var = match[0]
+        operand1 = match[1]
+        operator = match[2]
+        operand2 = match[3] if match[3] else ""  # Operand2 may be empty for NOT operations
+
+        # Store the operation details in the dictionary
+        logical_operations[output_var] = {
+            "operand1": operand1,
+            "operator": operator,
+            "operand2": operand2 if operand2 else "N/A"
+        }
+
+    # Print the operations
+    print("logical_operations:")
+    for var, details in logical_operations.items():
+        print(f"{var} = {details['operand1']} {details['operator']} {details['operand2']}")
+    print("______________________________________________________")
     ############## Always Blocks ###################
 
     always_blocks = finder.findall(
