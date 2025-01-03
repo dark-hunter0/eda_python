@@ -1,5 +1,6 @@
 import re
 import re as finder
+import time
 import tkinter as tk
 from tkinter import filedialog, scrolledtext
 import customtkinter as ctk
@@ -50,6 +51,7 @@ def parse_file(filename):
         print(f"Module name: {module_name}")
     else:
         print("No module name found.")
+        time.sleep(15)
         exit(1)
     #if __name__ == "__main__":
     print("_____________________________________________________")
